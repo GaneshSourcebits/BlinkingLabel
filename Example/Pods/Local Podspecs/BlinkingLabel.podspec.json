@@ -17,14 +17,17 @@
   },
   "swift_version": "4.0",
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.0"
   },
   "source_files": "BlinkingLabel/Classes/**/*",
   "dependencies": {
-    "FacebookCore": [
+    "TwitterKit": [
 
     ],
-    "FacebookLogin": [
+    "FBSDKCoreKit": [
+
+    ],
+    "FBSDKLoginKit": [
 
     ]
   }

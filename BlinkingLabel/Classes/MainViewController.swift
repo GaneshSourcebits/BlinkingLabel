@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import FacebookCore
-import FacebookLogin
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 public class MainViewController: UIViewController {
 
@@ -32,19 +32,13 @@ public class MainViewController: UIViewController {
 
     @objc func LoginWithFB() {
        
-        let loginManager = LoginManager()
-        loginManager.logOut()
-        loginManager.logIn(readPermissions: [.publicProfile, .email], viewController: nil) { (loginResult) in
-            switch loginResult {
-            case .failed(let error):
-                print(error)
-            case .cancelled:
-                print("user cancelled the login")
-            case .success(_, _, let accessToken): // (let grantedPermissions, let declinedPermissions, let accessToken)
-                print("Logged in with FB ID: \(String(describing: accessToken.userId))")
-                //self?.getFBAccountDetails()
+        let loginManager = FBSDKLoginManager()
+//        loginManager.logOut()
+        loginManager.logIn(withReadPermissions: ["public_profile", "email"] , from: self, handler:{ (loginResult, error) in
+            if ((loginResult?.grantedPermissions) != nil) {
+                print(loginResult?.token!)
             }
-        }
+        })
     }
 
     override public func didReceiveMemoryWarning() {
