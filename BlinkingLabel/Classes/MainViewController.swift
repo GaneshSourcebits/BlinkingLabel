@@ -8,6 +8,7 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import TwitterKit
 
 public class MainViewController: UIViewController {
 
@@ -22,12 +23,17 @@ public class MainViewController: UIViewController {
         label.textColor = UIColor.red
         view.addSubview(label)
         
-        let loginWithFB = UIButton(frame: CGRect(x: 150, y: 300, width: 200, height: 30))
-        loginWithFB.center = view.center
+        let loginWithFB = UIButton(frame: CGRect(x: 50, y: 300, width: 200, height: 30))
         loginWithFB.setTitle("Login With FB", for: .normal)
         loginWithFB.setTitleColor(UIColor.red, for: .normal)
         loginWithFB.addTarget(self, action: #selector(LoginWithFB), for: .touchUpInside)
         view.addSubview(loginWithFB)
+        
+        let loginWithTW = UIButton(frame: CGRect(x: 50, y: 400, width: 300, height: 30))
+        loginWithTW.setTitle("Login With Twitter", for: .normal)
+        loginWithTW.setTitleColor(UIColor.red, for: .normal)
+        loginWithTW.addTarget(self, action: #selector(LoginWithTwitter), for: .touchUpInside)
+        view.addSubview(loginWithTW)
     }
 
     @objc func LoginWithFB() {
@@ -37,6 +43,17 @@ public class MainViewController: UIViewController {
         loginManager.logIn(withReadPermissions: ["public_profile", "email"] , from: self, handler:{ (loginResult, error) in
             if ((loginResult?.grantedPermissions) != nil) {
                 print(loginResult?.token!)
+            }
+        })
+    }
+    
+    @objc func LoginWithTwitter() {
+        
+        TWTRTwitter.sharedInstance().logIn(completion: { (session, error) in
+            if let session = session {
+                print("signed in as \(session.userName )");
+            } else {
+                print("error: \(error?.localizedDescription ?? "")");
             }
         })
     }

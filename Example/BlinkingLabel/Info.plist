@@ -7,7 +7,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb174518889743175</string>
+				<string>twitterkit-bOLIk22ODc9hYrXYW2AAQKJyu</string>
 			</array>
 		</dict>
 	</array>
@@ -46,5 +46,10 @@
 	</array>
 	<key>FacebookAppID</key>
 	<string>174518889743175</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>twitter</string>
+		<string>twitterauth</string>
+	</array>
 </dict>
 </plist>
