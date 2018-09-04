@@ -33,6 +33,8 @@ This CocoaPod provides the ability to use a UILabel that may be started and stop
 
   s.source_files = 'BlinkingLabel/Classes/**/*'
   
+  s.static_framework = true
+
   # s.resource_bundles = {
   #   'BlinkingLabel' => ['BlinkingLabel/Assets/*.png']
   # }
@@ -44,5 +46,5 @@ This CocoaPod provides the ability to use a UILabel that may be started and stop
   s.dependency 'FBSDKCoreKit'
   s.dependency 'FBSDKLoginKit'
   # s.dependency 'Google/SignIn'
-  # s.dependency 'GoogleSignIn'
+  s.dependency 'GoogleSignIn'
 end

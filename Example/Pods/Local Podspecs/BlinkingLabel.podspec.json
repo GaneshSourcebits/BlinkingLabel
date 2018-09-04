@@ -20,6 +20,7 @@
     "ios": "9.0"
   },
   "source_files": "BlinkingLabel/Classes/**/*",
+  "static_framework": true,
   "dependencies": {
     "TwitterKit": [
 
@@ -28,6 +29,9 @@
 
     ],
     "FBSDKLoginKit": [
+
+    ],
+    "GoogleSignIn": [
 
     ]
   }

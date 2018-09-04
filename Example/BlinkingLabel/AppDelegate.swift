@@ -8,6 +8,7 @@
 
 import UIKit
 import TwitterKit
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,13 +22,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        TWTRTwitter.sharedInstance().start(withConsumerKey:"uibTzw2UZsn31t5daRwHxz8Mr", consumerSecret:"aTSgcUNSym4juium3l05kwm1YmD6rRXhhNZmab4daFQV2tk0ki")
         TWTRTwitter.sharedInstance().start(withConsumerKey: "bOLIk22ODc9hYrXYW2AAQKJyu", consumerSecret: "ZZtHSh7dAwJ74IiNZOX5ICFcOzm1FLDCR9lp9jIW55sz8KYNs4")
         
+        GIDSignIn.sharedInstance().clientID = "1010851753559-r39p7qm7uj3konn6ubd000dnsj5j2kac.apps.googleusercontent.com"
+        
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return TWTRTwitter.sharedInstance().application(app, open: url, options: options)
+        
+        if url.scheme?.caseInsensitiveCompare("com.googleusercontent.apps.1010851753559-r39p7qm7uj3konn6ubd000dnsj5j2kac") == ComparisonResult.orderedSame {
+            return GIDSignIn.sharedInstance().handle(url as URL?,
+                                                     sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        } else {
+             return TWTRTwitter.sharedInstance().application(app, open: url, options: options)
+        }
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
