@@ -9,9 +9,9 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import TwitterKit
-import GoogleSignIn
+//import GoogleSignIn
 
-public class MainViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+public class MainViewController: UIViewController { //, GIDSignInUIDelegate, GIDSignInDelegate {
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +19,8 @@ public class MainViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.green
         
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
+//        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance().uiDelegate = self
 
         let label = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 30))
         label.text = "Main View"
@@ -39,11 +39,11 @@ public class MainViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
         loginWithTW.addTarget(self, action: #selector(LoginWithTwitter), for: .touchUpInside)
         view.addSubview(loginWithTW)
         
-        let loginWithGoogle = UIButton(frame: CGRect(x: 50, y: 600, width: 300, height: 30))
-        loginWithGoogle.setTitle("Login With Google", for: .normal)
-        loginWithGoogle.setTitleColor(UIColor.red, for: .normal)
-        loginWithGoogle.addTarget(self, action: #selector(LoginWithGoogle), for: .touchUpInside)
-        view.addSubview(loginWithGoogle)
+//        let loginWithGoogle = UIButton(frame: CGRect(x: 50, y: 600, width: 300, height: 30))
+//        loginWithGoogle.setTitle("Login With Google", for: .normal)
+//        loginWithGoogle.setTitleColor(UIColor.red, for: .normal)
+//        loginWithGoogle.addTarget(self, action: #selector(LoginWithGoogle), for: .touchUpInside)
+//        view.addSubview(loginWithGoogle)
     }
 
     @objc func LoginWithFB() {
@@ -68,7 +68,7 @@ public class MainViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
         })
     }
 
-    @objc func LoginWithGoogle() {
+  /*  @objc func LoginWithGoogle() {
         GIDSignIn.sharedInstance().signOut()
         GIDSignIn.sharedInstance().signIn()
     }
@@ -88,6 +88,7 @@ public class MainViewController: UIViewController, GIDSignInUIDelegate, GIDSignI
             print("logged in as: \(fullName)")
         }
     }
+ */
     
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
