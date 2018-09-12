@@ -35,6 +35,8 @@ This CocoaPod provides the ability to use a UILabel that may be started and stop
   
   s.static_framework = true
 
+  s.ios.vendored_frameworks = 'EMS_SDK.framework'
+
   # s.resource_bundles = {
   #   'BlinkingLabel' => ['BlinkingLabel/Assets/*.png']
   # }
